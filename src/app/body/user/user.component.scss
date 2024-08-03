@@ -1,0 +1,48 @@
+::ng-deep .p-dropdown{
+    left: 2vh;
+    max-width: 58%;
+    white-space: inherit;
+    max-height: min-content;
+}
+button.update{
+    left: 10vh;
+}
+button.add{
+    position: relative;
+    top: -17px;
+    left: 13vh;
+}
+button.add :hover{
+    background-color: darken(azure, 10%);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.user{
+    font-size: xx-large;
+    transform: translateY(-10px);
+    font-family: 'Verdana', sans-serif;
+}
+::ng-deep .p-datatable {
+    margin-bottom: -40px;
+}
+input{
+    border-color: black;
+    position: relative;
+    left: 15vh;
+    bottom: 2.5vh;
+}
+button.submit{
+    left: 8vh;
+    bottom: 2.5vh;
+    max-width: fit-content;
+    position: relative;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+button.submit:hover {
+    color: rgb(162, 163, 163);
+}

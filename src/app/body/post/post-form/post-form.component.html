@@ -1,0 +1,97 @@
+<form [formGroup]="post" class="w-full" style="width: 1500px; background-color: #f9f9f9; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-5">
+      <input type="number" id="id" class="form-control" placeholder="Id" formControlName="id" size="30" hidden>
+    </div>
+    <div class="mb-5">
+      <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Title<label class="text-red-500 text-xs mt-1">*</label></label>
+      <input type="text" pInputText formControlName="Title" style="width: 100%;" />
+      @if (post.get('title')?.hasError('required') && post.get('title')?.touched) {
+      <div class="text-red-500 text-xs mt-1">Title is required</div>
+      }
+    </div> 
+    <div class="mb-5">
+      <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Description<label class="text-red-500 text-xs mt-1">*</label></label>
+      <textarea 
+        rows="5" 
+        cols="30" 
+        pInputTextarea 
+        formControlName="Description"
+        style="width: 100%;">
+    </textarea>
+      @if (post.get('description')?.hasError('required') && post.get('description')?.touched) {
+      <div class="text-red-500 text-xs mt-1">Description is required</div>
+      }
+    </div>
+    <!-- <div class="mb-5">
+        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Category<label class="text-red-500 text-xs mt-1">*</label></label>
+        <input type="text" pInputText formControlName="Name" />
+        @if (post.get('category')?.hasError('required') && post.get('createdBy')?.touched) {
+        <div class="text-red-500 text-xs mt-1">Category is required</div>
+        }
+    </div> -->
+
+    <div class="flex mb-5">
+      <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" style="margin-right: 12px;">Category</label>
+      <form [formGroup]="post">
+          <p-dropdown 
+              formControlName="Category" 
+              [options]="category"
+              optionLabel="name" optionValue="value"
+              placeholder="Select" />
+      </form>
+      <label for="createdBy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" style="margin-right: 5px;">Created By<label class="text-red-500 text-xs mt-1">*</label></label>
+      <input type="number" pInputText formControlName="CreatedBy" />
+      @if (post.get('createdBy')?.hasError('required') && post.get('createdBy')?.touched) {
+      <div class="text-red-500 text-xs mt-1">Created By is required</div>
+      }
+      <label for="isPublished" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" style="margin-right: 12px; margin-left: 5px;">Is Published</label>
+      <form [formGroup]="post">
+        <p-dropdown 
+            formControlName="isPublished" 
+            [options]="published"
+            optionLabel="name" optionValue="value"
+            placeholder="Select" />
+    </form>
+  </div>
+
+    <!-- <div class="mb-5">
+      <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+      <form [formGroup]="post">
+        <p-dropdown 
+            formControlName="Category" 
+            [options]="category"
+            optionLabel="name" optionValue="value"
+            placeholder="Select" />
+    </form>
+    </div>
+    <div class="mb-5">
+        <label for="createdBy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Created By<label class="text-red-500 text-xs mt-1">*</label></label>
+        <input type="number" pInputText formControlName="CreatedBy" />
+        @if (post.get('createdBy')?.hasError('required') && post.get('createdBy')?.touched) {
+        <div class="text-red-500 text-xs mt-1">Created By is required</div>
+        }
+    </div>  -->
+
+    <!-- <div class="mb-5">
+        <label for="createdDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Created By<label class="text-red-500 text-xs mt-1">*</label></label>
+        <input type="datetime" pInputText formControlName="CreatedDate" />
+        @if (post.get('createdDate')?.hasError('required') && post.get('createdDate')?.touched) {
+        <div class="text-red-500 text-xs mt-1">Created Date is required</div>
+        }
+    </div>  -->
+    <!-- <div class="flex mb-5"> -->
+      <!-- <label for="isPublished" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is Published</label>
+      <form [formGroup]="post">
+        <p-dropdown 
+            formControlName="isPublished" 
+            [options]="published"
+            optionLabel="name" optionValue="value"
+            placeholder="Select" />
+    </form> -->
+    <!-- </div> -->
+    <div class="flex justify-content-center">  
+      <button pButton *ngIf="isAdding" [rounded]="true" icon="pi pi-check" severity="success" type="button" (click)="onSubmit()" style="cursor: pointer;"> Submit</button>
+      <button pButton *ngIf="!isAdding" [rounded]="true" icon="pi pi-check" severity="success" type="button" style="margin-left: 10px; cursor: pointer;" (click)="onUpdate()"> Update</button>
+      <button pButton [rounded]="true" icon="pi pi-sync" severity="danger" type="button" style="margin-left: 10px; cursor: pointer;" (click)="onReset()"> Reset</button>
+    </div>
+    </form>

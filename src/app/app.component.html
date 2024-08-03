@@ -1,0 +1,13 @@
+<p-menubar class="menu" [model]="items" [style]="{ 'background-image': 'linear-gradient(to right, var(--yellow-500), var(--yellow-200))' }">    <ng-template pTemplate="start">
+        <a routerLink="/">
+            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2XJDfXcM6Hu8jfMgU7V38MnYmSMvIL3R_jA&s" height="40" class="mr-2" routerLink="/"/>
+        </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <!-- <input type="text" pInputText placeholder="Search" class="mr-2" />
+        <button pButton type="submit" class="submit ml-2" icon="pi pi-search"></button> -->
+        <!-- <i class="pi pi-search"></i> -->
+        <button pButton label="Exit" class="exit font-bold ml-2" icon="pi pi-sign-out" onclick="location.href='https://google.com'"></button>
+    </ng-template>
+</p-menubar>
+<router-outlet />

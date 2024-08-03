@@ -1,0 +1,27 @@
+<div class ="card flex justify-content-center" style="padding-top: 10px;">
+    <p-card header="CRUD" subheader="CRUD Operations" [style]="{ width: '360px', border: '2px solid black', borderRadius: '15px'}">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://miro.medium.com/v2/resize:fit:1400/1*2eBdh0vLZjUyCDF6x1EqvQ.png"[style]="{borderRadius: '15px'}"/>
+        </ng-template>
+        <p>
+            This is a web-platform design for Create-Read-Update-Delete Operations.
+        </p>
+        
+        <div class="flex gap-3 mt-1" style="padding-top: 40px;">
+                <!-- <p-button label="Cancel" severity="secondary" class="w-full" styleClass="w-full" /> -->
+                <!-- <p-button label="View" class="w-full" styleClass="w-full"/> -->
+            <button pButton label="User View" class="user font-bold ml-2" icon="pi pi-user" style="width: 100%;" onclick="location.href='/user'"></button>
+            <button pButton label="Post View" class="post font-bold ml-2" icon="pi pi-file-edit" style="width: 100%;" onclick="location.href='/post'"></button>
+            <!-- <a href="/user" target="_self" rel="noopener noreferrer" class="p-button font-bold w-full" styleClass="w-full" style="text-decoration: none; text-align: center; width: 20px;">
+                User View
+            </a> -->
+            <!-- <a href="/post" target="_self" rel="noopener noreferrer" class="p-button font-bold w-full" styleClass="w-full" style="text-decoration: none; text-align: center; width: 20px;">
+                Post View
+            </a> -->
+        </div>
+        
+        <ng-template pTemplate="footer" style="padding-bottom: 10px;">
+            <p class="end">Copyright &copy; 2024 | Triniket Maiti</p>
+        </ng-template>
+    </p-card>
+</div>

@@ -1,0 +1,93 @@
+  <div class ="card flex justify-content-center" style="padding-top: 7px;">
+    <p-toast />
+    <p-confirmDialog />
+    <p-card [style]="{ width: '845px', border: '2px solid black', borderRadius: '15px'}">
+      <p-toolbar class="p-toolbar-end" styleClass="bg-gray-900 shadow-2" [style]="{ 'border-radius': '1rem', 'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))', 'position': 'relative', 'top': '-25px' }">
+        <div style="padding-top: 10px; margin-bottom: -20px;">
+          <span class="user font-bold text-bluegray-50" style="position: relative; left: 5px; top: -10px;">
+            USER DETAILS
+          </span>
+          <input type="text" pInputText #searchInput type="text" (input)="dt2.filterGlobal(searchInput.value, 'contains')" placeholder="Search" class="mr-2" />
+          <button pButton type="submit" class="submit ml-2" icon="pi pi-search"></button>
+          <button pButton class="add" label="Add User" icon="pi pi-plus" severity="secondary" (click)="showDialog()" size="small" style="cursor: pointer; background-color: azure; color: black;"></button>
+        </div>
+      </p-toolbar>
+        <p-table #dt2 [value]="user" [paginator]="true" [rows]="4" [tableStyle]="{ 'width': '50rem', 'position': 'relative', 'top': '-10px' }" [globalFilterFields]="['id', 'name']">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id" style="width:10%">Id<p-sortIcon field="id" /></th>
+                <th>Name</th>
+                <!-- <th>Password</th> -->
+                <!-- <th>Is Active
+                  <select id="isActiveFilter" class="form-select">
+                  <option value="">--</option>
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                  </select>
+                </th> -->
+                <th>Is Active
+                  <!-- <div id="isActiveFilter" style="margin-left: -50px;">
+                    <input type="radio" id="isActiveAll" name="isActive" value="" checked>
+                    <label for="isActiveAll">All</label>
+                    <input type="radio" id="isActiveTrue" name="isActive" value="true">
+                    <label for="isActiveTrue">true</label>
+                    <input type="radio" id="isActiveFalse" name="isActive" value="false">
+                    <label for="isActiveFalse">false</label>
+                  </div> -->
+                  <!-- <form class="flex flex-row gap-2 align-items-center" [formGroup]="radio">
+                    <div *ngFor="let tf of active" class="field-checkbox">
+                        <p-radioButton 
+                            [inputId]="tf.value" 
+                            [value]="tf" 
+                            formControlName="selectedActive" />
+                        <label [for]="tf.value" class="ml-1">
+                            {{ tf.name }}
+                        </label>
+                    </div>
+                </form> -->
+                <!-- <form [formGroup]="radio"> -->
+                    <!-- <select name="isActive" class="form-control">
+                      <option *ngFor="let x of isActive"> {{x}} </option>
+                    </select> -->
+                  <p-dropdown
+                      [options]="isActive"
+                      optionLabel="name"
+                      optionValue="value"
+                      (onChange)="activeUsers($event)"
+                       />
+                <!-- </form> -->
+                </th>
+                <th>Update</th>
+                <th>Delete</th>
+                <!-- <th>
+                  <div class="text-center" style="width: 123px;">
+                    <p-button label="Add User" icon="pi pi-plus" severity="secondary" (onClick)="showDialog()" size="small" ></p-button>
+                  </div>
+                </th>
+                <th>
+                  <div class="text-left" style="width: 123px;">
+                    <a href="/" target="_self" rel="noopener noreferrer" class="p-button font-bold w-full" styleClass="w-full" style="text-decoration: none; text-align: center;">
+                      Home
+                  </a>
+                  </div>
+                </th> -->
+                <!-- <th>Edit</th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <!-- <td>{{ user.password }}</td> -->
+                <td>{{ user.isActive }}</td>
+                <td>
+                  <button pButton class="update" [rounded]="true" icon="pi pi-pencil" severity="info" type="button" (click)="showUpdateDialog(user.id)" style="cursor: pointer;"></button>
+                </td>
+                <td>
+                  <button pButton class="delete" [rounded]="true" icon="pi pi-trash" severity="danger" type="button" (click)="DeleteU(user.id)" style="cursor: pointer;"></button>
+                </td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>

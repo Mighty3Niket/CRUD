@@ -1,0 +1,84 @@
+<form [formGroup]="user" class="w-full" style="width: 1500px; background-color: #f9f9f9; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" (ngSubmit)="onSubmit()" novalidate>
+  <!-- <div class="mb-5">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+    <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name">
+    @if (user.get('name')?.hasError('required') && user.get('name')?.touched) {
+    <div class="form-error">Name is required</div>
+    }
+  </div> -->
+  
+  <div class="mb-5">
+    <!-- <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Id<label class="text-red-500 text-xs mt-1">*</label></label> -->
+    <input type="number" id="id" class="form-control" placeholder="Id" formControlName="id" size="30" hidden>
+   
+    </div>
+
+    <!-- <div class="mb-5">
+        <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Id</label>
+        <input type="number" id="id" class="form-control" placeholder="" formControlName="id" size="30" readonly>
+    </div> -->
+
+  <div class="mb-5">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Name<label class="text-red-500 text-xs mt-1">*</label></label>
+    <!-- <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name" size="30" autocomplete="given-name"> -->
+    <input type="text" style="width: 100%;" pInputText formControlName="Name" />
+    @if (user.get('Name')?.hasError('required') && user.get('Name')?.touched) {
+    <div class="text-red-500 text-xs mt-1">Name is required</div>
+    }
+  </div>
+  <div class="pass mb-5">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password<label class="text-red-500 text-xs mt-1">*  (Atleast 1 digit, 1 uppercase, 1 lowercase letters & 1 special character)</label></label>
+    <!-- <input type="password" id="password" class="form-control" placeholder="Password" formControlName="password" size="30" autocomplete="current-password"> -->
+    <p-password class="password" formControlName="Password" [feedback]="false" [toggleMask]="true"/>
+    @if (user.get('Password')?.hasError('required') && user.get('Password')?.touched) {
+    <div class="text-red-500 text-xs mt-1">Password is required</div>
+    }
+  </div>
+  <!-- <div class="mb-5">
+    <label for="isActive" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is Active</label>
+    <input type="dropdown" id="dropdown" class="form-control" placeholder="Is Active" formControlName="isActive">
+  </div> -->
+  <div class="mb-5">
+    <label for="isActive" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is Active</label>
+    <form [formGroup]="user">
+      <p-dropdown 
+          formControlName="isActive" 
+          [options]="active"
+          optionLabel="name" optionValue="value"
+          placeholder="Select" />
+  </form>
+    <!-- <label for="isActive" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is Active<label class="text-red-500 text-xs mt-1">*</label></label>
+    <select id="isActive" class="form-control" formControlName="isActive">
+      <option value="">--</option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select> -->
+  </div>
+  <!-- <div class="mb-5">
+    <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
+    <input type="date" id="dob" class="form-control" placeholder="" formControlName="dob">
+    @if (user.get('dob')?.hasError('required') && user.get('dob')?.touched) {
+    <div class="form-error">Date of Birth is required</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="doj" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Joining</label>
+    <input type="date" id="doj" class="form-control" placeholder="" formControlName="doj">
+    @if (user.get('doj')?.hasError('required') && user.get('doj')?.touched) {
+    <div class="form-error">Date of Joining is required</div>
+    }
+  </div> -->
+  <!-- <button type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Submit</button> -->
+    
+    <!-- <p-button label="Submit" size="small"></p-button>
+    <p-button label="Cancel" size="small"></p-button> -->
+
+  <div class="flex justify-content-center">
+    <button pButton *ngIf="isAdding" [rounded]="true" icon="pi pi-check" severity="success" type="button" (click)="onSubmit()" style="cursor: pointer;"> Add</button>
+    <button pButton *ngIf="!isAdding" [rounded]="true" icon="pi pi-check" severity="success" type="button" style="margin-left: 10px; cursor: pointer;" (click)="onUpdate()"> Update</button>
+    <button pButton [rounded]="true" icon="pi pi-sync" severity="danger" type="button" style="margin-left: 10px; cursor: pointer;" (click)="onReset()"> Reset</button>
+  </div>
+  <!-- <button type="button" (click)="onClose()"
+    class="text-white  ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Cancel</button> -->
+</form>

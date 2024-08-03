@@ -1,0 +1,23 @@
+input{
+    border-color: black;
+}
+button.submit{
+    right: 7vh;
+    max-width: fit-content;
+    position: relative;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+button.submit:hover {
+    color: rgb(162, 163, 163);
+}
+button.exit:hover{
+    cursor: pointer;
+}
+::ng-deep .p-menubar{
+    background-color: blanchedalmond;
+}
